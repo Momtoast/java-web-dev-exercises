@@ -1,9 +1,6 @@
 package org.launchcode.java.charactercounts;
 
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 public class CharacterCounter {
     public static void main(String[] args) {
@@ -12,11 +9,15 @@ public class CharacterCounter {
         String phrase = input.nextLine();
         input.close();
 
+        phrase = phrase.toLowerCase();
+
         char[] charArray = phrase.toCharArray();
 
         HashMap<Character, Integer> charCounts = new HashMap<>();
 
         int counter;
+
+        char[] nonAlphaArray = {'.', '"', ',', ' ', '-', '\'', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0'};
 
         for (char letter : charArray) {
             if (charCounts.containsKey(letter)) {
@@ -25,6 +26,10 @@ public class CharacterCounter {
             } else {
                 charCounts.put(letter, 1);
             }
+        }
+
+        for (char thing : nonAlphaArray) {
+            charCounts.remove(thing);
         }
 
         for (Character letter : charCounts.keySet()) {
