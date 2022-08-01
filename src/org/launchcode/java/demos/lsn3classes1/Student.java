@@ -41,4 +41,57 @@ public class Student {
     public double getGpa() {
         return this.gpa;
     }
+
+    public Student(String name, int studentId, int numberOfCredits, double gpa) {
+        this.name = name;
+        this.studentId = studentId;
+        this.numberOfCredits = numberOfCredits;
+        this.gpa = gpa;
+    }
+
+    public String getGradeLevel() {
+        if (this.numberOfCredits < 30) {
+            return "Freshman";
+        } else if (this.numberOfCredits < 60) {
+            return "Sophomore";
+        } else if (this.numberOfCredits < 90) {
+            return "Junior";
+        } else {
+            return "Senior";
+        }
+    }
+
+    public void addGrade(int courseCredits, double grade) {
+        double totalQualityScore = this.gpa * this.numberOfCredits;
+        totalQualityScore = totalQualityScore + (courseCredits * grade);
+        this.numberOfCredits = this.numberOfCredits + courseCredits;
+        this.gpa = totalQualityScore/this.numberOfCredits;
+    }
+
+    public boolean equals(Object toBeCompared) {
+        if (toBeCompared == this) {
+            return true;
+        }
+
+        if (toBeCompared == null) {
+            return false;
+        }
+
+        if (toBeCompared.getClass() != getClass()) {
+            return false;
+        }
+
+        Student theStudent = (Student) toBeCompared;
+        return theStudent.getStudentId() == getStudentId();
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", studentId=" + studentId +
+                ", numberOfCredits=" + numberOfCredits +
+                ", gpa=" + gpa +
+                '}';
+    }
 }
