@@ -1,5 +1,6 @@
 package org.launchcode.java.studio7inheritance.Main;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public abstract class Question {
@@ -29,4 +30,6 @@ public abstract class Question {
     public abstract String askQuestion();
 
     public abstract boolean checkAnswer(String answer);
+
+    public abstract HashMap<String, String> displayOptions();
 }

@@ -1,5 +1,6 @@
 package org.launchcode.java.studio7inheritance.Main;
 
+import java.util.HashMap;
 import java.util.Objects;
 
 public class TrueFalse extends Question{
@@ -37,10 +38,16 @@ public class TrueFalse extends Question{
     };
 
     public boolean checkAnswer(String answer) {
-        if (answer == "T" || correctAnswer) {
+        if (answer == "T" && correctAnswer) {
             return true;
-        } else if (answer == "F" || correctAnswer == false) {
+        } else if (answer == "F" && correctAnswer == false) {
             return true;
-        } else {return false;}
+        } else {
+            return false;}
+    }
+
+    @Override
+    public HashMap<String, String> displayOptions() {
+        return null;
     }
 }
